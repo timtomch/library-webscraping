@@ -55,18 +55,30 @@ This allows for exchange between incompatible systems and easier conversion of d
 
 XML document follows basic syntax rules:
 
+* A comment starts with `<!--` and ends with `-->`
 * An XML document is structured using _nodes_, which include element nodes, attribute nodes and text nodes
 * XML element nodes must have an opening and closing tag, e.g. `<catfood>` opening tag and `</catfood>` closing tag
 * XML tags are case sensitive, e.g. `<catfood>` does not equal `<catFood>`
 * XML elements must be properly nested:
 
 ```
+<!-- correctly nested -->
 <catfood>
   <manufacturer>Purina</manufacturer>
     <address> 12 Cat Way, Boise, Idaho, 21341</address>
   <date>2019-10-01</date>
 </catfood>
 ```
+
+```
+<!-- `manufacturer` and `address` are incorrectly nested -->
+<catfood>
+  <manufacturer>Purina
+    <address> 12 Cat Way, Boise, Idaho, 21341</manufacturer></address>
+  <date>2019-10-01</date>
+</catfood>
+```
+
 * Text nodes (data) are contained inside the opening and closing tags
 * XML attribute nodes contain values that must be quoted, e.g.
 ``` <catfood type="basic"></catfood> ```
