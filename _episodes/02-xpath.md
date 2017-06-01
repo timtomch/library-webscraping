@@ -55,18 +55,30 @@ This allows for exchange between incompatible systems and easier conversion of d
 
 XML document follows basic syntax rules:
 
+* A comment starts with `<!--` and ends with `-->`
 * An XML document is structured using _nodes_, which include element nodes, attribute nodes and text nodes
 * XML element nodes must have an opening and closing tag, e.g. `<catfood>` opening tag and `</catfood>` closing tag
 * XML tags are case sensitive, e.g. `<catfood>` does not equal `<catFood>`
 * XML elements must be properly nested:
 
 ```
+<!-- correctly nested -->
 <catfood>
   <manufacturer>Purina</manufacturer>
     <address> 12 Cat Way, Boise, Idaho, 21341</address>
   <date>2019-10-01</date>
 </catfood>
 ```
+
+```
+<!-- `manufacturer` and `address` are incorrectly nested -->
+<catfood>
+  <manufacturer>Purina
+    <address> 12 Cat Way, Boise, Idaho, 21341</manufacturer></address>
+  <date>2019-10-01</date>
+</catfood>
+```
+
 * Text nodes (data) are contained inside the opening and closing tags
 * XML attribute nodes contain values that must be quoted, e.g.
 ``` <catfood type="basic"></catfood> ```
@@ -231,6 +243,8 @@ return object by clicking on it in order to view its contents.
 Let's look closer at the XPath query used in the example above: `/html/head/title/text()`. The first `/` indicates
 the _root_ of the document. With that query, we told the browser to
 
+
+| Expression   | Description |
 |-----------------|:-------------|
 | `/`| Start at the root of the document... |
 | `html/`| ... navigate to the `html` node ... |
@@ -426,6 +440,7 @@ Array [ <blockquote.challenge>, <blockquote.challenge>, <blockquote.challenge>, 
 > >
 > > Let's walk through that syntax:
 > >
+> > | Expression   | Description |
 > > |-----------------|:-------------|
 > > | `$x("`| This function tells the browser we want it to execute an XPath query. |
 > > | `//`| Look anywhere in the document... |
@@ -541,7 +556,7 @@ XPath wildcards can be used to select unknown XML nodes.
 
 ### Examples
 
-|Path Expression|	Result|//*[@id="examples-2"]
+|Path Expression|	Result|
 |-----------------|:-------------|
 |```//*[@class='solution']```|Select all elements with class attribute 'solution'|
 
