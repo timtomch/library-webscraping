@@ -243,6 +243,8 @@ return object by clicking on it in order to view its contents.
 Let's look closer at the XPath query used in the example above: `/html/head/title/text()`. The first `/` indicates
 the _root_ of the document. With that query, we told the browser to
 
+
+| Expression   | Description |
 |-----------------|:-------------|
 | `/`| Start at the root of the document... |
 | `html/`| ... navigate to the `html` node ... |
@@ -438,6 +440,7 @@ Array [ <blockquote.challenge>, <blockquote.challenge>, <blockquote.challenge>, 
 > >
 > > Let's walk through that syntax:
 > >
+> > | Expression   | Description |
 > > |-----------------|:-------------|
 > > | `$x("`| This function tells the browser we want it to execute an XPath query. |
 > > | `//`| Look anywhere in the document... |
@@ -553,7 +556,7 @@ XPath wildcards can be used to select unknown XML nodes.
 
 ### Examples
 
-|Path Expression|	Result|//*[@id="examples-2"]
+|Path Expression|	Result|
 |-----------------|:-------------|
 |```//*[@class='solution']```|Select all elements with class attribute 'solution'|
 
